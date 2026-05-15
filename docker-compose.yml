@@ -1,0 +1,16 @@
+services:
+  database:
+    image: mmdlsu/oracle11g
+    privileged: true
+    ports:
+      - "1521:1521"
+      - "8080:8080"
+    volumes:
+      - ./oracle-data:/opt/oracle
+    environment:
+      TZ: Asia/Shanghai
+      ORACLE_SID: ORCL
+      ORACLE_PWD: 123456
+      ORACLE_CHARACTERSET: AL32UTF8
+      PASSWORD_NO_EXPIRE: ${PASSWORD_NO_EXPIRE:-true}
+      LOGIN_ATTEMPTS_UNLIMITED: ${LOGIN_ATTEMPTS_UNLIMITED:-true}
